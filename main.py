@@ -94,7 +94,8 @@ def wybierz_najlepsze(mozliwosci):
     return najlepsze, najwyzsza
 
 
-def mozliwosci(litery, SLOWNIK):
+def mozliwosci(litery):
+    SLOWNIK = przygotuj_slownik()
     from itertools import permutations
     perms = [''.join(j) for i in range(1, len(litery) + 1) for j in permutations(litery, i)]
     poprawne = []
@@ -105,8 +106,8 @@ def mozliwosci(litery, SLOWNIK):
     return poprawne
 
 
-def wygeneruj_slowo(litery, SLOWNIK):
-    mozliwe = mozliwosci(litery, SLOWNIK)
+def wygeneruj_slowo(litery):
+    mozliwe = mozliwosci(litery)
     #print('Mogę ułożyć następujące słowa: ')
     #print(mozliwosci)
     najlepsze, punkty = wybierz_najlepsze(mozliwe)
@@ -131,9 +132,10 @@ def dobierz_litery(liczba):
 
 
 def operate():
-    SLOWNIK = przygotuj_slownik()
+
     #litery = dobierz_litery(7)
     litery = losuj(7)
-    wygeneruj_slowo(litery, SLOWNIK)
+    wygeneruj_slowo(litery)
+
 
 operate()
